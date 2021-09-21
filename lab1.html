@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Web - lab 1</title>
+        <link rel="icon" href="images/icon.ico">
+
+        <style>
+            body {
+                background-image: url("images/background.jpg");
+                margin: 0;
+            }
+
+            * {
+                font-family: serif;
+            }
+
+            div {
+                border-style: solid;
+                border-width: 2px;
+                border-color: black;
+                border-radius: 20px;
+                margin: 10px;
+            }
+
+            header {
+                background-color: rgba(138, 43, 226, 0.3);
+                text-align: center;
+                color: rgb(243, 220, 152);
+                font-size: 40px;
+            }
+
+            a {
+                color: inherit;
+            }
+
+            #plot {
+                text-align: center;
+            }
+
+            [type=text] {
+                width: 45px;
+                text-align: center;
+            }
+
+            button {
+                margin: 10px;
+            }
+
+            .plot-figure {
+                fill: red;
+                fill-opacity: 0.3;
+                stroke: red;
+            }
+
+            tbody tr:nth-child(odd) {
+                background-color: rgba(138, 43, 226, 0.2);
+            }
+
+            tbody tr:nth-child(even) {
+                background-color: rgba(243, 220, 152, 0.2);
+            }
+
+            table {
+                border-style: solid;
+                border-width: 2px;
+                border-color: black;
+                border-radius: 20px;
+                margin: 20px;
+                text-align: center;
+                padding: 3px;
+            }
+
+            .result_table{
+                table-layout: fixed;
+                width: 80%;
+                margin-left: 10%;
+            }
+
+            #point {
+                fill: darkred;
+                fill-opacity: 0.5;
+                stroke: darkred;
+            }
+
+        </style>
+    </head>
+    
+    <body>
+        <script src="client.js"></script>
+        
+        <header>
+            Bavykin Roman Alekseevich, P3210, <a target="_blank" href="task1.html" >V-10104</a>
+        </header>
+        
+        <div id="plot">
+            <svg height="300px" width="300px" viewBox="0 0 300 300" preserveAspectRatio="xMidYMin" style="display: inline-block">
+                <rect class="plot-figure" height="100" width="100" x="150" y="50"></rect>
+                <polygon class="plot-figure" points="100 150, 150 50, 150 150"></polygon>
+                <path class="plot-figure" d="M150 150 h 50 a 50 50 0 0 1 -50 50 Z"></path>
+                <line class="plot-grid" x1="10" x2="290" y1="150" y2="150" stroke="black"></line>
+                <line class="plot-grid" x1="150" x2="150" y1="10" y2="290" stroke="black"></line>
+                <line class="plot-grid" x1="50" x2="50" y1="147" y2="153" stroke="black"></line>
+                <line class="plot-grid" x1="100" x2="100" y1="147" y2="153" stroke="black"></line>
+                <line class="plot-grid" x1="200" x2="200" y1="147" y2="153" stroke="black"></line>
+                <line class="plot-grid" x1="250" x2="250" y1="147" y2="153" stroke="black"></line>
+                <line class="plot-grid" x1="147" x2="153" y1="50" y2="50" stroke="black"></line>
+                <line class="plot-grid" x1="147" x2="153" y1="100" y2="100" stroke="black"></line>
+                <line class="plot-grid" x1="147" x2="153" y1="200" y2="200" stroke="black"></line>
+                <line class="plot-grid" x1="147" x2="153" y1="250" y2="250" stroke="black"></line>
+                <line class="plot-grid" x1="285" x2="290" y1="147" y2="150" stroke="black"></line>
+                <line class="plot-grid" x1="285" x2="290" y1="153" y2="150" stroke="black"></line>
+                <line class="plot-grid" x1="147" x2="150" y1="15" y2="10" stroke="black"></line>
+                <line class="plot-grid" x1="153" x2="150" y1="15" y2="10" stroke="black"></line>
+                <text x="280" y="145">X</text>
+                <text x="245" y="145">R</text>
+                <text x="190" y="145">R/2</text>
+                <text x="85" y="145">-R/2</text>
+                <text x="40" y="145">-R</text>
+
+                <text x="155" y="20">Y</text>
+                <text x="155" y="55">R</text>
+                <text x="155" y="105">R/2</text>
+                <text x="155" y="205">-R/2</text>
+                <text x="155" y="255">-R</text>
+
+                <circle id="point" r="3" cx="150" cy="150" visibility="hidden"></circle>
+            </svg>
+        </div>
+        <div id="input" align="center">
+            <p class="variable">
+                X = <label for="x"></label>
+                <input id="x" type="text" placeholder="(-5; 5)">
+            </p>
+            <p class="variable">
+                Y =
+                <label>
+                    <input type="button" value="-4" name="y_buttons" onclick="setY(this)">
+                </label>
+                <label>
+                    <input type="button" value="-3" name="y_buttons" onclick="setY(this)">
+                </label>
+                <label>
+                    <input type="button" value="-2" name="y_buttons" onclick="setY(this)">
+                </label>
+                <label>
+                    <input type="button" value="-1" name="y_buttons" onclick="setY(this)">
+                </label>
+                <label>
+                    <input type="button" value="0" name="y_buttons" onclick="setY(this)">
+                </label>
+                <label>
+                    <input type="button" value="1" name="y_buttons" onclick="setY(this)">
+                </label>
+                <label>
+                    <input type="button" value="2" name="y_buttons" onclick="setY(this)">
+                </label>
+                <label>
+                    <input type="button" value="3" name="y_buttons" onclick="setY(this)">
+                </label>
+                <label>
+                    <input type="button" value="4" name="y_buttons" onclick="setY(this)">
+                </label>
+            </p>
+            <p class="variable">
+                R =
+                <label>
+                    <input type="radio" value="1" name="r_radio">
+                </label>1
+                <label>
+                    <input type="radio" value="2" name="r_radio">
+                </label>2
+                <label>
+                    <input type="radio" value="3" name="r_radio">
+                </label>3
+                <label>
+                    <input type="radio" value="4" name="r_radio">
+                </label>4
+                <label>
+                    <input type="radio" value="5" name="r_radio">
+                </label>5
+            </p>
+        </div>
+        <div id="buttons" align="center">
+            <button id="submit_button" type="submit">Submit</button>
+            <button id="cleaning_button" type="submit">Clean</button>
+        </div>
+        <table class="result_table" align="center">
+            <tr>
+                <th class="variable">X</th>
+                <th class="variable">Y</th>
+                <th class="variable">R</th>
+                <th>Result</th>
+                <th>Submit time</th>
+                <th>Calc time</th>
+            </tr>
+        </table>
+    </body>
+</html>
